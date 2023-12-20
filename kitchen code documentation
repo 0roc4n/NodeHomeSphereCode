@@ -1,0 +1,66 @@
+# Kitchen and Dining Area  Code Documentation
+
+## Overview
+
+This Arduino Uno code is designed for automating the Kitchen and Dining Area. It incorporates a gas sensor (MQ-2) to detect gas levels, controls various lights and appliances based on user input and received server data, and includes a warning buzzer for high gas levels.
+
+## Hardware Components
+
+- ESP8266 WiFi module
+- MQ-2 Gas Sensor
+- Buzzer for gas level warnings
+- LEDs for Kitchen Ceiling Light, Electric Fan, and Wall Source
+- Push buttons for controlling each appliance and light
+
+## Dependencies
+
+- [ESP8266WiFi library](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi)
+- [WifiClientSecureBearSSL library](https://github.com/esp8266/Arduino/tree/master/libraries/WiFiClientSecureBearSSL)
+- [ESP8266HTTPClient library](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266HTTPClient)
+- [Adafruit Sensor library](https://github.com/adafruit/Adafruit_Sensor)
+- [ArduinoJson library](https://arduinojson.org/)
+
+## Pin Configuration
+
+| Arduino Pin | Component                      | Purpose                                |
+|--------------|--------------------------------|----------------------------------------|
+| A0           | MQ-2 Gas Sensor                | Analog input for gas level detection  |
+| 16           | Buzzer                         | Output for warning buzzer              |
+| D1           | Kitchen Ceiling Light          | Output for controlling ceiling light   |
+| D3           | Electric Fan                   | Output for controlling electric fan    |
+| D4           | Wall Source                    | Output for controlling wall source     |
+| D5           | Kitchen Ceiling Light PushButton| Input for toggling ceiling light       |
+| D7           | Electric Fan PushButton         | Input for toggling electric fan        |
+| D8           | Wall Source PushButton          | Input for toggling wall source          |
+
+## Code Structure
+
+The code is structured into the setup and loop functions. The setup function initializes pins, connects to WiFi, and sets up the initial state. The loop function continuously reads gas sensor values, updates the device states based on push button input, and sends/receives data from the server.
+
+## Functionality
+
+- **Gas Level Detection**: The MQ-2 gas sensor detects gas levels in the kitchen area.
+
+- **Device State Control**: Push buttons are used to toggle the state of each device (Kitchen Ceiling Light, Electric Fan, Wall Source).
+
+- **Gas Level Warning**: A warning buzzer is activated if the gas level exceeds a certain threshold.
+
+- **Server Communication**: The code communicates with a server, sending sensor data (gas levels) and receiving updated states for devices.
+
+## Communication Protocol
+
+The code uses JSON for communication with the server. It sends a JSON payload containing sensor data and receives JSON data with updated device states.
+
+## Troubleshooting
+
+- Ensure proper WiFi connection.
+- Check the server response for JSON parsing errors.
+- Calibrate the gas sensor if needed.
+
+## Note
+
+This code is specific to the Kitchen and Dining Area, and some constants may need adjustment for different configurations.
+
+---
+
+Feel free to customize this documentation to add any specific details or additional notes relevant to your project.
