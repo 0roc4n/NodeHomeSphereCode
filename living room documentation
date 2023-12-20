@@ -1,0 +1,63 @@
+# Living Room  Code Documentation
+
+## Overview
+
+This Arduino Uno code is designed for automating the living room. It incorporates motion detection using a Passive Infrared (PIR) sensor and controls various lights and appliances based on user input and received server data.
+
+## Hardware Components
+
+- ESP8266 WiFi module
+- PIR Sensor
+- LEDs for Ceiling Light, Balcony Light, Electric Fan, and Wall Source
+- Push buttons for controlling each appliance and light
+
+## Dependencies
+
+- [ESP8266WiFi library](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi)
+- [WifiClientSecureBearSSL library](https://github.com/esp8266/Arduino/tree/master/libraries/WiFiClientSecureBearSSL)
+- [ESP8266HTTPClient library](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266HTTPClient)
+- [Adafruit Sensor library](https://github.com/adafruit/Adafruit_Sensor)
+- [ArduinoJson library](https://arduinojson.org/)
+
+## Pin Configuration
+
+| Arduino Pin | Component                | Purpose                               |
+|--------------|--------------------------|---------------------------------------|
+| D0           | PIR Sensor               | Motion detection                      |
+| D1           | Ceiling Light            | Output for controlling ceiling light  |
+| D2           | Balcony Light            | Output for controlling balcony light  |
+| D3           | Electric Fan             | Output for controlling electric fan   |
+| D4           | Wall Source              | Output for controlling wall source    |
+| D5           | Ceiling Push Button      | Input for toggling ceiling light      |
+| D6           | Balcony Push Button      | Input for toggling balcony light      |
+| D7           | Electric Fan Push Button | Input for toggling electric fan        |
+| D8           | Wall Source Push Button  | Input for toggling wall source         |
+
+## Code Structure
+
+The code is structured into the setup and loop functions. The setup function initializes pins, connects to WiFi, and sets up the initial state. The loop function continuously checks for motion, updates the device states based on push button input, and sends/receives data from the server.
+
+## Functionality
+
+- **Motion Detection**: The PIR sensor detects motion in the living room.
+
+- **Device State Control**: Push buttons are used to toggle the state of each device (Ceiling Light, Balcony Light, Electric Fan, Wall Source).
+
+- **Server Communication**: The code communicates with a server, sending sensor data (motion status) and receiving updated states for devices.
+
+## Communication Protocol
+
+The code uses JSON for communication with the server. It sends a JSON payload containing sensor data and receives JSON data with updated device states.
+
+## Troubleshooting
+
+- Ensure proper WiFi connection.
+- Check the server response for JSON parsing errors.
+
+## Note
+
+This code is specific to the Living Room, and some constants may need adjustment for different configurations.
+
+---
+
+Feel free to customize this documentation to add any specific details or additional notes relevant to your project.
